@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>亚马逊客服专员-王文明</title>
+  <style>
+    body {
+      font-family: "Microsoft YaHei", sans-serif;
+      font-size: 14px;
+      background: #f4f6fa;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #4c9665;
+    }
+
+    .tree {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .tree ul {
+      padding-top: 20px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .tree li {
+      list-style-type: none;
+      text-align: center;
+      position: relative;
+      margin: 5px;
+      padding: 5px 5px;
+      background: #fff;
+      border-radius: 10px;
+      border: 2px solid #007acc;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: 0.3s;
+    }
+
+    .tree li:hover {
+      background: #e6f7ff;
+    }
+
+    .tree li::before, .tree li::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      border-left: 2px solid #007acc;
+    }
+
+    .tree li::before {
+      left: 50%;
+      height: 20px;
+    }
+
+    .tree li:only-child::before {
+      display: none;
+    }
+
+    .tree ul ul::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 0;
+      height: 20px;
+      border-left: 2px solid #007acc;
+    }
+
+    .tree ul li::after {
+      display: none;
+    }
+
+    .tree li:only-child {
+      padding-top: 0;
+    }
+
+    @media (max-width: 768px) {
+      .tree ul {
+        flex-direction: column;
+        align-items: center;
+      }
+      .tree li {
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>🔧 亚马逊客服·日常工作流程</h2>
+  <div class="tree">
+    <ul>
+      <li>
+        Amazon 客服工作内容与流程
+        <ul>
+          <li>
+            1. 工作目标与计划
+            <ul>
+              <li>提升客户满意度与回复效率</li>
+              <li>降低负面反馈与退货率</li>
+              <li>标准化常见问题的答复模板</li>
+              <li>熟悉平台（Amazon/TEMU）的政策与流程</li>
+              <li>建立客户沟通档案，记录售前/售后</li>
+              <li>每周更新问题库与模板</li>
+            </ul>
+          </li>
+          <li>
+            2. 每日客服工作内容
+            <ul>
+              <li>
+                2.1 站内信回复
+                <ul>
+                  <li>缺货 → 建议关闭订单</li>
+                  <li>配件缺失 → 比对清单说明</li>
+                  <li>物流延迟 → 建议等待或关闭</li>
+                  <li>签收争议 → 建议报警</li>
+                  <li>商品误买 → 推荐其他型号</li>
+                  <li>损坏/安装异常 → 要求照片</li>
+                  <li>尺寸/参数问题 → 查说明书</li>
+                  <li>兼容性问题 → 提供接口尺寸</li>
+                </ul>
+              </li>
+              <li>
+                2.2 沟通技巧与模板使用
+                <ul>
+                  <li>语气专业且自然</li>
+                  <li>使用标准模板</li>
+                  <li>主动解释平台规则</li>
+                  <li>纠正机器人错误回答</li>
+                </ul>
+              </li>
+              <li>
+                2.3 多渠道客服（TEMU）
+                <ul>
+                  <li>禁止说 cancel，改为关闭订单</li>
+                  <li>注意人工介入方式</li>
+                  <li>避免说“没货”，改为暂时无法发货</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            3. 常见问题与处理流程
+            <ul>
+              <li>
+                3.1 缺货
+                <ul>
+                  <li>提醒买家无库存</li>
+                  <li>建议关闭订单</li>
+                  <li>推荐替代型号</li>
+                </ul>
+              </li>
+              <li>
+                3.2 签收争议
+                <ul>
+                  <li>查物流状态</li>
+                  <li>解释照片送达制</li>
+                  <li>建议报警或联系快递</li>
+                </ul>
+              </li>
+              <li>
+                3.3 商品描述争议
+                <ul>
+                  <li>核查页面内容</li>
+                  <li>询问产品详细资料</li>
+                  <li>安抚买家情绪</li>
+                </ul>
+              </li>
+              <li>
+                3.4 兼容性问题
+                <ul>
+                  <li>询问接口尺寸</li>
+                  <li>提供产品适配说明</li>
+                  <li>推荐转接配件</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            4. 差评与 Feedback 处理
+            <ul>
+              <li>
+                4.1 收集信息
+                <ul>
+                  <li>获取订单号、邮箱、问题描述</li>
+                  <li>截图差评内容存档</li>
+                </ul>
+              </li>
+              <li>
+                4.2 处理流程
+                <ul>
+                  <li>引导站外沟通（邮箱截图/附件）</li>
+                  <li>提供补发配件或部分退款方案</li>
+                  <li>避免使用“差评”等敏感词</li>
+                  <li>委婉鼓励买家移除 Feedback</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
