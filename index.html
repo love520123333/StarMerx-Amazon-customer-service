@@ -1,87 +1,128 @@
  <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="shortcut icon" href="https://starmerx.oss-cn-shanghai.aliyuncs.com/17150170101684485505734_favicon.ico">
-  <title>亚马逊客服专员-王文明</title>
+  <title>亚马逊客服专员-工作流程</title>
   <style>
-    body {
-      font-family: "Microsoft YaHei", sans-serif;
-      font-size: 14px;
-      background: #f4f6fa;
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+      
       padding: 20px;
+      min-height: 100vh;
+      color: #333;
+      background: linear-gradient(to right top, rgb(233, 193, 199), pink);
     }
-
-    .pre-pic {
-      transform: translateX(50%);
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      
     }
-
-    .pic {
-      width: 405px;
-      height: 720px;
-      transform: translateX(-50%);
-    }
-
-    h2 {
+    
+    header {
       text-align: center;
-      color: #4c9665;
+      width: 100%;
+      margin: 20px 0 30px;
     }
-
-    .pre-pic h2 {
-      transform: translateX(-50%);
+    
+    h1 {
+      color: #2c7744;
+      font-size: 28px;
+      margin-bottom: 10px;
+      position: relative;
+      display: inline-block;
+      padding: 0 20px;
     }
-
+    
+    h1:after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 20%;
+      width: 60%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #4c9665, transparent);
+    }
+    
+    .workflow-section {
+      flex: 1;
+      min-width: 300px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      padding: 25px;
+      overflow: hidden;
+    }
+    
     .tree {
       position: relative;
-      display: flex;
-      justify-content: center;
     }
-
+    
     .tree ul {
       padding-top: 20px;
       position: relative;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+      transition: all 0.3s ease;
     }
-
+    
     .tree li {
       list-style-type: none;
       text-align: center;
       position: relative;
-      margin: 5px;
-      padding: 5px 5px;
+      margin: 10px 5px;
+      padding: 12px 15px;
       background: #fff;
       border-radius: 10px;
-      border: 2px solid #007acc;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      transition: 0.3s;
+      border: 2px solid #2a8fff;
+      box-shadow: 0 4px 12px rgba(42, 143, 255, 0.15);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      min-width: 200px;
+      z-index: 2;
     }
-
+    
     .tree li:hover {
-      background: #e6f7ff;
+      background: #e8f4ff;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(42, 143, 255, 0.25);
     }
-
+    
+    .tree li.active {
+      background: #d4e9ff;
+      border-color: #0066cc;
+      box-shadow: 0 4px 10px rgba(0, 102, 204, 0.3);
+    }
+    
     .tree li::before,
     .tree li::after {
       content: '';
       position: absolute;
-      top: 0;
-      border-left: 2px solid #007acc;
+      top: -20px;
+      border-left: 2px solid #2a8fff;
+      z-index: 1;
     }
-
+    
     .tree li::before {
       left: 50%;
       height: 20px;
     }
-
+    
     .tree li:only-child::before {
       display: none;
     }
-
+    
     .tree ul ul::before {
       content: '';
       position: absolute;
@@ -89,152 +130,318 @@
       left: 50%;
       width: 0;
       height: 20px;
-      border-left: 2px solid #007acc;
+      border-left: 2px solid #2a8fff;
     }
-
-    .tree ul li::after {
-      display: none;
+    
+    .image-section {
+      flex: 0 0 350px;
+      text-align: center;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-
-    .tree li:only-child {
-      padding-top: 0;
+    
+    .image-section h2 {
+      color: #2c7744;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #eaeaea;
+      width: 100%;
     }
-
-    @media (max-width: 768px) {
-      .tree ul {
+    
+    .placeholder-img {
+      width: 100%;
+      max-width: 300px;
+      height: 400px;
+      background: linear-gradient(135deg, #e6f7ff 0%, #cce5ff 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #2a8fff;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      padding: 20px;
+      border: 2px dashed #2a8fff;
+      margin-top: 40px;
+    }
+    
+    @media (max-width: 900px) {
+      .container {
         flex-direction: column;
-        align-items: center;
       }
-
-      .tree li {
-        width: 80%;
+      
+      .image-section {
+        flex: 1;
       }
     }
+    
+    @media (max-width: 600px) {
+      .tree li {
+        min-width: 160px;
+        padding: 10px;
+        font-size: 13px;
+      }
+      
+      h1 {
+        font-size: 24px;
+      }
+    }
+    
+    .badge {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: #9ed484;
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+     .weather-box {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      margin-top: 30px;
+      font-size: 16px;
+    }
+
+    .weather-box h3 {
+      margin-bottom: 20px;
+      font-size: 20px;
+      color: #2c7744;
+    }
+
+    .weather-box .weather-info {
+      font-size: 18px;
+    }
+
+    .weather-box .temperature {
+      font-size: 36px;
+      color: #2c7744;
+      margin-bottom: 10px;
+    }
+
+    .huangdi img {
+      width: 200px;
+      height: 300px;
+      margin-top: 30px;
+    }
+    .huangdi{
+      margin-top: 50px;
+    }
+    .huangdi .hd1{
+      width: 300px;
+    }
+    
   </style>
 </head>
 
 <body>
-  <h2>🔧 亚马逊客服·日常工作流程</h2>
-  <div class="tree">
-    <ul>
-      <li>
-        Amazon 客服工作内容与流程
+  <header>
+    <h1>📋 亚马逊客服·日常工作流程</h1>
+  </header>
+  
+  <div class="container">
+    <section class="workflow-section">
+      <div class="tree">
         <ul>
-          <li>
-            1. 工作目标与计划
-            <ul>
-              <li>提升客户满意度与回复效率</li>
-              <li>降低负面反馈与退货率</li>
-              <li>标准化常见问题的答复模板</li>
-              <li>熟悉平台（Amazon/TEMU）的政策与流程</li>
-              <li>建立客户沟通档案，记录售前/售后</li>
-              <li>每周更新问题库与模板</li>
-            </ul>
-          </li>
-          <li>
-            2. 每日客服工作内容
+          <li class="active">
+            Amazon 客服工作内容与流程
             <ul>
               <li>
-                2.1 站内信回复
+                1. 工作目标与计划
                 <ul>
-                  <li>缺货 → 建议关闭订单</li>
-                  <li>配件缺失 → 比对清单说明</li>
-                  <li>物流延迟 → 建议等待或关闭</li>
-                  <li>签收争议 → 建议报警</li>
-                  <li>商品误买 → 推荐其他型号</li>
-                  <li>损坏/安装异常 → 要求照片</li>
-                  <li>尺寸/参数问题 → 查说明书</li>
-                  <li>兼容性问题 → 提供接口尺寸</li>
+                  <li>提高客户满意度与复购率</li>
+                  <li>降低负面反馈与退货率</li>
+                  <li>标准化常见问题的解答模板</li>
+                  <li>熟悉平台（Amazon/TEMU）的政策与流程</li>
+                  <li>建立客户沟通档案，记录售前/售后</li>
+                  <li>每周更新问题库与模板</li>
                 </ul>
               </li>
               <li>
-                2.2 沟通技巧与模板使用
+                2. 每日客服工作内容
                 <ul>
-                  <li>语气专业且自然</li>
-                  <li>使用标准模板</li>
-                  <li>主动解释平台规则</li>
-                  <li>纠正机器人错误回答</li>
+                  <li>
+                    2.1 站内信处理
+                    <ul>
+                      <li>缺货 → 建议关闭订单<span class="badge">!</span></li>
+                      <li>配件缺失 → 对比清单说明</li>
+                      <li>物流延迟 → 建议等待或关闭</li>
+                      <li>签收争议 → 建议报备</li>
+                      <li>商品误买 → 推荐其他型号</li>
+                      <li>损坏/安装异常 → 要求提供照片</li>
+                      <li>尺寸/参数问题 → 查说明书</li>
+                      <li>兼容性问题 → 提供兼容尺寸</li>
+                    </ul>
+                  </li>
+                  <li>
+                    2.2 沟通技巧与模板使用
+                    <ul>
+                      <li>语气专业且自然</li>
+                      <li>使用标准模板</li>
+                      <li>主动解释平台规则</li>
+                      <li>纠正机器人错误回复</li>
+                    </ul>
+                  </li>
+                  <li>
+                    2.3 多平台客服（TEMU）
+                    <ul>
+                      <li>禁止说 cancel，改为关闭订单</li>
+                      <li>注意人工介入方式</li>
+                      <li>避免说"没货"，改为暂时无法发货</li>
+                    </ul>
+                  </li>
                 </ul>
               </li>
               <li>
-                2.3 多渠道客服（TEMU）
+                3. 常见问题处理流程
                 <ul>
-                  <li>禁止说 cancel，改为关闭订单</li>
-                  <li>注意人工介入方式</li>
-                  <li>避免说“没货”，改为暂时无法发货</li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li>
-            3. 常见问题与处理流程
-            <ul>
-              <li>
-                3.1 缺货
-                <ul>
-                  <li>提醒买家无库存</li>
-                  <li>建议关闭订单</li>
-                  <li>推荐替代型号</li>
-                </ul>
-              </li>
-              <li>
-                3.2 签收争议
-                <ul>
-                  <li>查物流状态</li>
-                  <li>解释照片送达制</li>
-                  <li>建议报警或联系快递</li>
-                </ul>
-              </li>
-              <li>
-                3.3 商品描述争议
-                <ul>
-                  <li>核查页面内容</li>
-                  <li>询问产品详细资料</li>
-                  <li>安抚买家情绪</li>
-                </ul>
-              </li>
-              <li>
-                3.4 兼容性问题
-                <ul>
-                  <li>询问接口尺寸</li>
-                  <li>提供产品适配说明</li>
-                  <li>推荐转接配件</li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li>
-            4. 差评与 Feedback 处理
-            <ul>
-              <li>
-                4.1 收集信息
-                <ul>
-                  <li>获取订单号、邮箱、问题描述</li>
-                  <li>截图差评内容存档</li>
+                  <li>
+                    3.1 缺货
+                    <ul>
+                      <li>提醒买家无库存</li>
+                      <li>建议关闭订单</li>
+                      <li>推荐替代型号</li>
+                    </ul>
+                  </li>
+                  <li>
+                    3.2 签收争议
+                    <ul>
+                      <li>查物流状态</li>
+                      <li>解释照片签收制度</li>
+                      <li>建议报备或联系快递</li>
+                    </ul>
+                  </li>
+                  <li>
+                    3.3 商品描述争议
+                    <ul>
+                      <li>核查页面内容</li>
+                      <li>询问产品详细资料</li>
+                      <li>安抚买家情绪</li>
+                    </ul>
+                  </li>
+                  <li>
+                    3.4 兼容性问题
+                    <ul>
+                      <li>询问接口尺寸</li>
+                      <li>提供产品适配说明</li>
+                      <li>建议转接配件</li>
+                    </ul>
+                  </li>
                 </ul>
               </li>
               <li>
-                4.2 处理流程
+                4. 差评与 Feedback 处理
                 <ul>
-                  <li>引导站外沟通（邮箱截图/附件）</li>
-                  <li>提供补发配件或部分退款方案</li>
-                  <li>避免使用“差评”等敏感词</li>
-                  <li>委婉鼓励买家移除 Feedback</li>
+                  <li>
+                    4.1 收集信息
+                    <ul>
+                      <li>获取订单号、邮箱、问题描述</li>
+                      <li>截图差评内容存档</li>
+                    </ul>
+                  </li>
+                  <li>
+                    4.2 处理流程
+                    <ul>
+                      <li>引导站外沟通（邮箱截图/附件）</li>
+                      <li>提供补发配件或部分退款方案</li>
+                      <li>避免使用"差评"等敏感词</li>
+                      <li>委婉鼓励买家移除 Feedback</li>
+                    </ul>
+                  </li>
                 </ul>
               </li>
             </ul>
           </li>
         </ul>
-      </li>
-    </ul>
+      </div>
+    </section>
 
+    
+    
+    <section class="image-section">
+      <h2>我的照片</h2>
+      <div class="placeholder-img">
+        
+        <small><img src="./wwm.jpg" alt="" width="305px" height="520px"></small>
+      </div>
+      <div class="huangdi">
+        <img src="./image6/images (1).jpg" alt=""  class="hd1">
+        <img src="./image6/下载 (2).jpg" alt="" class="hd1">
+        <img src="./image6/下载 (3).jpg" alt="">
+        <img src="./image6/下载 (4).jpg" alt="">
+        <img src="./image6/下载.jpg" alt="">
+        <img src="./image6/下载5.jpg" alt="">
+      </div>
 
+    </section>
   </div>
-  <div class="pre-pic">
-    <h2>我的照片</h2>
-    <img class="pic" src="./wwm.jpg" alt="">
-  </div>
 
+  <section class="weather-box" id="weather-box">
+      <h3>深圳市天气预报</h3>
+      <div class="weather-info">
+        <div id="temperature" class="temperature">加载中...</div>
+        <div id="weather-description">正在加载...</div>
+        <div id="wind-info">风速：加载中...</div>
+        <div id="humidity">湿度：加载中...</div>
+      </div>
+  </section>
+
+  <script>
+    // 添加列表项点击交互效果
+    document.querySelectorAll('.tree li').forEach(item => {
+      item.addEventListener('click', function(e) {
+        e.stopPropagation();
+        
+        // 移除所有active状态
+        document.querySelectorAll('.tree li.active').forEach(el => {
+          el.classList.remove('active');
+        });
+        
+        // 为当前项添加active状态
+        this.classList.add('active');
+      });
+    });
+
+
+     // 获取深圳市天气信息
+    function getWeather(citycode) {
+      fetch(`http://hmajax.itheima.net/api/weather/city?city=${citycode}`)
+        .then(response => response.json())
+        .then(data => {
+          const weatherData = data[0];
+          // 更新天气信息
+          document.getElementById("temperature").textContent = `${weatherData.temperature}°C`;
+          document.getElementById("weather-description").textContent = `${weatherData.weather}`;
+          document.getElementById("wind-info").textContent = `风速：${weatherData.windDirection} ${weatherData.windPower}`;
+          document.getElementById("humidity").textContent = `湿度：${weatherData.humidity}%`;
+        })
+        .catch(error => {
+          console.error("获取天气信息失败：", error);
+          // 处理错误
+          document.getElementById("temperature").textContent = "无法加载天气信息";
+          document.getElementById("weather-description").textContent = "请稍后重试";
+        });
+    }
+
+    // 加载深圳市的天气
+    getWeather('110100'); // 深圳市的城市代码是110100
+  </script>
 </body>
-
 </html>
