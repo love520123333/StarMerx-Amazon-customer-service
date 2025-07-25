@@ -393,17 +393,7 @@
 
     </section>
   </div>
-
-  <section class="weather-box" id="weather-box">
-      <h3>深圳市天气预报</h3>
-      <div class="weather-info">
-        <div id="temperature" class="temperature">加载中...</div>
-        <div id="weather-description">正在加载...</div>
-        <div id="wind-info">风速：加载中...</div>
-        <div id="humidity">湿度：加载中...</div>
-      </div>
-  </section>
-
+  
   <script>
     // 添加列表项点击交互效果
     document.querySelectorAll('.tree li').forEach(item => {
@@ -421,28 +411,7 @@
     });
 
 
-     // 获取深圳市天气信息
-    function getWeather(citycode) {
-      fetch(`http://hmajax.itheima.net/api/weather/city?city=${citycode}`)
-        .then(response => response.json())
-        .then(data => {
-          const weatherData = data[0];
-          // 更新天气信息
-          document.getElementById("temperature").textContent = `${weatherData.temperature}°C`;
-          document.getElementById("weather-description").textContent = `${weatherData.weather}`;
-          document.getElementById("wind-info").textContent = `风速：${weatherData.windDirection} ${weatherData.windPower}`;
-          document.getElementById("humidity").textContent = `湿度：${weatherData.humidity}%`;
-        })
-        .catch(error => {
-          console.error("获取天气信息失败：", error);
-          // 处理错误
-          document.getElementById("temperature").textContent = "无法加载天气信息";
-          document.getElementById("weather-description").textContent = "请稍后重试";
-        });
-    }
-
-    // 加载深圳市的天气
-    getWeather('110100'); // 深圳市的城市代码是110100
+  
   </script>
 </body>
 </html>
