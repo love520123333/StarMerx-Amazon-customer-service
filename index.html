@@ -1,129 +1,128 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>亚马逊客服专员-工作流程</title>
   <link rel="shortcut icon" href="./starmerx.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-    
+
     body {
-      font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
-      
-      padding: 20px;
+      font-family: 'Inter', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: #1d1d1f;
+      padding: 40px;
       min-height: 100vh;
-      color: #333;
-      background: linear-gradient(to right top, rgb(188, 187, 240), rgb(54, 131, 231));
+      overflow-x: hidden;
     }
-    
+
     .container {
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
-      gap: 30px;
-      
+      gap: 40px;
     }
-    
+
     header {
       text-align: center;
       width: 100%;
-      margin: 20px 0 30px;
+      margin: 40px 0;
     }
-    
+
     h1 {
-      color: #2c7744;
-      font-size: 28px;
-      margin-bottom: 10px;
+      font-size: 36px;
+      font-weight: 700;
+      color: #1d1d1f;
       position: relative;
       display: inline-block;
-      padding: 0 20px;
+      padding-bottom: 10px;
     }
-    
-    h1:after {
-      content: "";
+
+    h1::after {
+      content: '';
       position: absolute;
-      bottom: -5px;
+      bottom: 0;
       left: 20%;
       width: 60%;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, #4c9665, transparent);
+      height: 4px;
+      background: linear-gradient(to right, #007aff, #00c6ff);
+      border-radius: 2px;
     }
-    
+
     .workflow-section {
-      flex: 1;
+      flex: 2;
       min-width: 300px;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-      padding: 25px;
-      overflow: hidden;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      backdrop-filter: blur(10px);
     }
-    
-    .tree {
-      position: relative;
-    }
-    
+
     .tree ul {
       padding-top: 20px;
-      position: relative;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      transition: all 0.3s ease;
     }
-    
+
     .tree li {
       list-style-type: none;
       text-align: center;
       position: relative;
-      margin: 10px 5px;
-      padding: 12px 15px;
-      background: #fff;
-      border-radius: 10px;
-      border: 2px solid #2a8fff;
-      box-shadow: 0 4px 12px rgba(42, 143, 255, 0.15);
-      transition: all 0.3s ease;
+      margin: 15px;
+      padding: 15px 20px;
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
-      min-width: 200px;
-      z-index: 2;
+      min-width: 220px;
+      color: #1d1d1f; /* 确保文字颜色可见 */
     }
-    
+
     .tree li:hover {
-      background: #e8f4ff;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(42, 143, 255, 0.25);
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     }
-    
+
     .tree li.active {
-      background: #d4e9ff;
+      background: #007aff;
+      color: #ffffff; /* 确保激活状态文字为白色 */
       border-color: #0066cc;
-      box-shadow: 0 4px 10px rgba(0, 102, 204, 0.3);
+      box-shadow: 0 6px 20px rgba(0, 102, 204, 0.3);
     }
-    
+
     .tree li::before,
     .tree li::after {
       content: '';
       position: absolute;
       top: -20px;
-      border-left: 2px solid #2a8fff;
+      border-left: 2px solid #007aff;
       z-index: 1;
     }
-    
+
     .tree li::before {
       left: 50%;
       height: 20px;
     }
-    
+
     .tree li:only-child::before {
       display: none;
     }
-    
+
+    .tree ul ul {
+      display: block; /* 确保子节点默认可见 */
+    }
+
     .tree ul ul::before {
       content: '';
       position: absolute;
@@ -131,74 +130,71 @@
       left: 50%;
       width: 0;
       height: 20px;
-      border-left: 2px solid #2a8fff;
+      border-left: 2px solid #007aff;
     }
-    
+
     .image-section {
-      flex: 0 0 350px;
+      flex: 1;
+      min-width: 300px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      padding: 30px;
       text-align: center;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-      padding: 25px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      backdrop-filter: blur(10px);
     }
-    
+
     .image-section h2 {
-      color: #2c7744;
+      font-size: 24px;
+      font-weight: 600;
+      color: #1d1d1f;
       margin-bottom: 20px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid #eaeaea;
-      width: 100%;
     }
-    
-    .placeholder-img {
-      width: 100%;
-      max-width: 300px;
-      height: 400px;
-      background: linear-gradient(135deg, #e6f7ff 0%, #cce5ff 100%);
-      border-radius: 10px;
+
+    .image-gallery {
       display: flex;
-      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
       justify-content: center;
-      color: #2a8fff;
-      font-size: 18px;
-      font-weight: bold;
-      text-align: center;
-      padding: 20px;
-      border: 2px dashed #2a8fff;
-      margin-top: 40px;
     }
-    
+
+    .image-gallery img {
+      width: 100%;
+      max-width: 150px;
+      height: auto;
+      border-radius: 10px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .image-gallery img:hover {
+      transform: scale(1.1);
+    }
+
     @media (max-width: 900px) {
       .container {
         flex-direction: column;
       }
-      
-      .image-section {
+      .workflow-section, .image-section {
         flex: 1;
       }
     }
-    
+
     @media (max-width: 600px) {
-      .tree li {
-        min-width: 160px;
-        padding: 10px;
-        font-size: 13px;
-      }
-      
       h1 {
-        font-size: 24px;
+        font-size: 28px;
+      }
+      .tree li {
+        min-width: 180px;
+        font-size: 14px;
       }
     }
-    
+
     .badge {
       position: absolute;
       top: -10px;
       right: -10px;
-      background: #9ed484;
+      background: #34c759;
       color: white;
       width: 24px;
       height: 24px;
@@ -208,55 +204,14 @@
       justify-content: center;
       font-size: 12px;
       font-weight: bold;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
-
-     .weather-box {
-      background-color: white;
-      border-radius: 15px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      text-align: center;
-      margin-top: 30px;
-      font-size: 16px;
-    }
-
-    .weather-box h3 {
-      margin-bottom: 20px;
-      font-size: 20px;
-      color: #2c7744;
-    }
-
-    .weather-box .weather-info {
-      font-size: 18px;
-    }
-
-    .weather-box .temperature {
-      font-size: 36px;
-      color: #2c7744;
-      margin-bottom: 10px;
-    }
-
-    .huangdi img {
-      width: 200px;
-      height: 300px;
-      margin-top: 30px;
-    }
-    .huangdi{
-      margin-top: 50px;
-    }
-    .huangdi .hd1{
-      width: 300px;
-    }
-    
   </style>
 </head>
-
 <body>
   <header>
     <h1>📋 亚马逊客服·日常工作流程</h1>
   </header>
-  
+
   <div class="container">
     <section class="workflow-section">
       <div class="tree">
@@ -374,44 +329,81 @@
       </div>
     </section>
 
-    
-    
     <section class="image-section">
       <h2>我的照片</h2>
-      <div class="placeholder-img">
-        
-        <small><img src="./wwm.jpg" alt="" width="305px" height="520px"></small>
+      <div class="image-gallery">
+        <img src="./wwm.jpg" alt="Photo 1">
+        <img src="./image6/images (1).jpg" alt="Photo 2">
+        <img src="./image6/下载 (2).jpg" alt="Photo 3">
+        <img src="./image6/下载 (3).jpg" alt="Photo 4">
+        <img src="./image6/下载 (4).jpg" alt="Photo 5">
+        <img src="./image6/下载.jpg" alt="Photo 6">
+        <img src="./image6/下载5.jpg" alt="Photo 7">
       </div>
-      <div class="huangdi">
-        <img src="./image6/images (1).jpg" alt=""  class="hd1">
-        <img src="./image6/下载 (2).jpg" alt="" class="hd1">
-        <img src="./image6/下载 (3).jpg" alt="">
-        <img src="./image6/下载 (4).jpg" alt="">
-        <img src="./image6/下载.jpg" alt="">
-        <img src="./image6/下载5.jpg" alt="">
-      </div>
-
     </section>
   </div>
-  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script>
-    // 添加列表项点击交互效果
+    // GSAP 动画
+    // 1. 标题渐入
+    gsap.from("h1", {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      ease: "power2.out"
+    });
+
+    // 2. 工作流程卡片渐入
+    gsap.from(".workflow-section li", {
+      opacity: 0,
+      y: 30,
+      stagger: 0.1,
+      duration: 0.8,
+      ease: "power2.out",
+      delay: 0.5
+    });
+
+    // 3. 图片区域渐入
+    gsap.from(".image-gallery img", {
+      opacity: 0,
+      scale: 0.8,
+      stagger: 0.1,
+      duration: 0.8,
+      ease: "back.out(1.7)",
+      delay: 1
+    });
+
+    // 4. 鼠标悬停动画
     document.querySelectorAll('.tree li').forEach(item => {
-      item.addEventListener('click', function(e) {
-        e.stopPropagation();
-        
-        // 移除所有active状态
-        document.querySelectorAll('.tree li.active').forEach(el => {
-          el.classList.remove('active');
+      item.addEventListener('mouseenter', () => {
+        gsap.to(item, {
+          scale: 1.05,
+          y: -5,
+          duration: 0.3,
+          ease: "power2.out"
         });
-        
-        // 为当前项添加active状态
-        this.classList.add('active');
+      });
+      item.addEventListener('mouseleave', () => {
+        gsap.to(item, {
+          scale: 1,
+          y: 0,
+          duration: 0.3,
+          ease: "power2.out"
+        });
       });
     });
 
-
-  
+    // 5. 点击交互效果
+    document.querySelectorAll('.tree li').forEach(item => {
+      item.addEventListener('click', function(e) {
+        e.stopPropagation();
+        document.querySelectorAll('.tree li.active').forEach(el => {
+          el.classList.remove('active');
+        });
+        this.classList.add('active');
+      });
+    });
   </script>
 </body>
 </html>
