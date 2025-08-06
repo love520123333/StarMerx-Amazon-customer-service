@@ -1,11 +1,11 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>亚马逊客服专员-工作流程</title>
   <link rel="shortcut icon" href="./starmerx.ico" type="image/x-icon">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Raleway:wght@400;700&display=swap">
   <style>
     * {
       box-sizing: border-box;
@@ -14,9 +14,9 @@
     }
 
     body {
-      font-family: 'Inter', 'Microsoft YaHei', 'PingFang SC', sans-serif;
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      color: #1d1d1f;
+      font-family: 'Inter', 'Raleway', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+      background: #050801; /* Dark background for glowing effect */
+      color: #ffffff; /* White text for contrast */
       padding: 40px;
       min-height: 100vh;
       overflow-x: hidden;
@@ -39,7 +39,7 @@
     h1 {
       font-size: 36px;
       font-weight: 700;
-      color: #1d1d1f;
+      color: #ffffff; /* White text for dark background */
       position: relative;
       display: inline-block;
       padding-bottom: 10px;
@@ -59,11 +59,9 @@
     .workflow-section {
       flex: 2;
       min-width: 300px;
-      background: rgba(255, 255, 255, 0.95);
+      background: #050801; /* Black background */
       border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
       padding: 30px;
-      backdrop-filter: blur(10px);
     }
 
     .tree ul {
@@ -71,6 +69,7 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+      background: #050801; /* Black background for ul */
     }
 
     .tree li {
@@ -79,24 +78,33 @@
       position: relative;
       margin: 15px;
       padding: 15px 20px;
-      background: #ffffff;
+      background: #050801; /* Black background for li */
       border-radius: 12px;
       border: 1px solid #e0e0e0;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
       min-width: 220px;
-      color: #1d1d1f; /* 确保文字颜色可见 */
+      color: #03e9f4; /* Cyan text for glowing effect */
+      font-family: 'Raleway', sans-serif;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      overflow: hidden;
+      transition: background 0.5s, color 0.5s, box-shadow 0.5s;
     }
 
     .tree li:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      background: #03e9f4;
+      color: #050801;
+      box-shadow: 0 0 5px #03e9f4,
+                  0 0 25px #03e9f4,
+                  0 0 50px #03e9f4,
+                  0 0 200px #03e9f4;
     }
 
     .tree li.active {
       background: #007aff;
-      color: #ffffff; /* 确保激活状态文字为白色 */
+      color: #ffffff;
       border-color: #0066cc;
       box-shadow: 0 6px 20px rgba(0, 102, 204, 0.3);
     }
@@ -119,10 +127,6 @@
       display: none;
     }
 
-    .tree ul ul {
-      display: block; /* 确保子节点默认可见 */
-    }
-
     .tree ul ul::before {
       content: '';
       position: absolute;
@@ -133,21 +137,56 @@
       border-left: 2px solid #007aff;
     }
 
+    .border-span {
+      position: absolute;
+      display: block;
+      background: linear-gradient(to right, transparent, #03e9f4);
+    }
+
+    .border-top {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+    }
+
+    .border-right {
+      top: 0;
+      right: 0;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent, #03e9f4);
+    }
+
+    .border-bottom {
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to left, transparent, #03e9f4);
+    }
+
+    .border-left {
+      bottom: 0;
+      left: 0;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(to top, transparent, #03e9f4);
+    }
+
     .image-section {
       flex: 1;
       min-width: 300px;
-      background: rgba(255, 255, 255, 0.95);
+      background: #050801; /* Black background */
       border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
       padding: 30px;
       text-align: center;
-      backdrop-filter: blur(10px);
     }
 
     .image-section h2 {
       font-size: 24px;
       font-weight: 600;
-      color: #1d1d1f;
+      color: #ffffff; /* White text for dark background */
       margin-bottom: 20px;
     }
 
@@ -218,107 +257,163 @@
         <ul>
           <li class="active">
             Amazon 客服工作内容与流程
+            <span class="border-span border-top"></span>
+            <span class="border-span border-right"></span>
+            <span class="border-span border-bottom"></span>
+            <span class="border-span border-left"></span>
             <ul>
               <li>
                 1. 工作目标与计划
+                <span class="border-span border-top"></span>
+                <span class="border-span border-right"></span>
+                <span class="border-span border-bottom"></span>
+                <span class="border-span border-left"></span>
                 <ul>
-                  <li>提高客户满意度与复购率</li>
-                  <li>降低负面反馈与退货率</li>
-                  <li>标准化常见问题的解答模板</li>
-                  <li>熟悉平台（Amazon/TEMU）的政策与流程</li>
-                  <li>建立客户沟通档案，记录售前/售后</li>
-                  <li>每周更新问题库与模板</li>
+                  <li>提高客户满意度与复购率<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                  <li>降低负面反馈与退货率<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                  <li>标准化常见问题的解答模板<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                  <li>熟悉平台（Amazon/TEMU）的政策与流程<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                  <li>建立客户沟通档案，记录售前/售后<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                  <li>每周更新问题库与模板<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
                 </ul>
               </li>
               <li>
                 2. 每日客服工作内容
+                <span class="border-span border-top"></span>
+                <span class="border-span border-right"></span>
+                <span class="border-span border-bottom"></span>
+                <span class="border-span border-left"></span>
                 <ul>
                   <li>
                     2.1 站内信处理
+                    <span class="border-span border-top"></span>
+                    <span class="border-span border-right"></span>
+                    <span class="border-span border-bottom"></span>
+                    <span class="border-span border-left"></span>
                     <ul>
-                      <li>缺货 → 建议关闭订单<span class="badge">!</span></li>
-                      <li>配件缺失 → 对比清单说明</li>
-                      <li>物流延迟 → 建议等待或关闭</li>
-                      <li>签收争议 → 建议报备</li>
-                      <li>商品误买 → 推荐其他型号</li>
-                      <li>损坏/安装异常 → 要求提供照片</li>
-                      <li>尺寸/参数问题 → 查说明书</li>
-                      <li>兼容性问题 → 提供兼容尺寸</li>
+                      <li>缺货 → 建议关闭订单<span class="badge">!</span><span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                      <li>配件缺失 → 对比清单说明<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                      <li>物流延迟 → 建议等待或关闭<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                      <li>签收争议 → 建议报备<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                      <li>商品误买 → 推荐其他型号<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                      <li>损坏/安装异常 → 要求提供照片<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                      <li>尺寸/参数问题 → 查说明书<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                      <li>兼容性问题 → 提供兼容尺寸<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
                     </ul>
                   </li>
                   <li>
                     2.2 沟通技巧与模板使用
+                    <span class="border-span border-top"></span>
+                    <span class="border-span border-right"></span>
+                    <span class="border-span border-bottom"></span>
+                    <span class="border-span border-left"></span>
                     <ul>
-                      <li>语气专业且自然</li>
-                      <li>使用标准模板</li>
-                      <li>主动解释平台规则</li>
-                      <li>纠正机器人错误回复</li>
+                      <li>语气专业且自然<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                      <li>使用标准模板<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                      <li>主动解释平台规则<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                      <li>纠正机器人错误回复<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
                     </ul>
                   </li>
                   <li>
                     2.3 多平台客服（TEMU）
+                    <span class="border-span border-top"></span>
+                    <span class="border-span border-right"></span>
+                    <span class="border-span border-bottom"></span>
+                    <span class="border-span border-left"></span>
                     <ul>
-                      <li>禁止说 cancel，改为关闭订单</li>
-                      <li>注意人工介入方式</li>
-                      <li>避免说"没货"，改为暂时无法发货</li>
+                      <li>禁止说 cancel，改为关闭订单<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                      <li>注意人工介入方式<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                      <li>避免说"没货"，改为暂时无法发货<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
                     </ul>
                   </li>
                 </ul>
               </li>
               <li>
                 3. 常见问题处理流程
+                <span class="border-span border-top"></span>
+                <span class="border-span border-right"></span>
+                <span class="border-span border-bottom"></span>
+                <span class="border-span border-left"></span>
                 <ul>
                   <li>
                     3.1 缺货
+                    <span class="border-span border-top"></span>
+                    <span class="border-span border-right"></span>
+                    <span class="border-span border-bottom"></span>
+                    <span class="border-span border-left"></span>
                     <ul>
-                      <li>提醒买家无库存</li>
-                      <li>建议关闭订单</li>
-                      <li>推荐替代型号</li>
+                      <li>提醒买家无库存<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                      <li>建议关闭订单<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                      <li>推荐替代型号<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
                     </ul>
                   </li>
                   <li>
                     3.2 签收争议
+                    <span class="border-span border-top"></span>
+                    <span class="border-span border-right"></span>
+                    <span class="border-span border-bottom"></span>
+                    <span class="border-span border-left"></span>
                     <ul>
-                      <li>查物流状态</li>
-                      <li>解释照片签收制度</li>
-                      <li>建议报备或联系快递</li>
+                      <li>查物流状态<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                      <li>解释照片签收制度<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                      <li>建议报备或联系快递<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
                     </ul>
                   </li>
                   <li>
                     3.3 商品描述争议
+                    <span class="border-span border-top"></span>
+                    <span class="border-span border-right"></span>
+                    <span class="border-span border-bottom"></span>
+                    <span class="border-span border-left"></span>
                     <ul>
-                      <li>核查页面内容</li>
-                      <li>询问产品详细资料</li>
-                      <li>安抚买家情绪</li>
+                      <li>核查页面内容<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                      <li>询问产品详细资料<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                      <li>安抚买家情绪<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
                     </ul>
                   </li>
                   <li>
                     3.4 兼容性问题
+                    <span class="border-span border-top"></span>
+                    <span class="border-span border-right"></span>
+                    <span class="border-span border-bottom"></span>
+                    <span class="border-span border-left"></span>
                     <ul>
-                      <li>询问接口尺寸</li>
-                      <li>提供产品适配说明</li>
-                      <li>建议转接配件</li>
+                      <li>询问接口尺寸<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                      <li>提供产品适配说明<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                      <li>建议转接配件<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
                     </ul>
                   </li>
                 </ul>
               </li>
               <li>
                 4. 差评与 Feedback 处理
+                <span class="border-span border-top"></span>
+                <span class="border-span border-right"></span>
+                <span class="border-span border-bottom"></span>
+                <span class="border-span border-left"></span>
                 <ul>
                   <li>
                     4.1 收集信息
+                    <span class="border-span border-top"></span>
+                    <span class="border-span border-right"></span>
+                    <span class="border-span border-bottom"></span>
+                    <span class="border-span border-left"></span>
                     <ul>
-                      <li>获取订单号、邮箱、问题描述</li>
-                      <li>截图差评内容存档</li>
+                      <li>获取订单号、邮箱、问题描述<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                      <li>截图差评内容存档<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
                     </ul>
                   </li>
                   <li>
                     4.2 处理流程
+                    <span class="border-span border-top"></span>
+                    <span class="border-span border-right"></span>
+                    <span class="border-span border-bottom"></span>
+                    <span class="border-span border-left"></span>
                     <ul>
-                      <li>引导站外沟通（邮箱截图/附件）</li>
-                      <li>提供补发配件或部分退款方案</li>
-                      <li>避免使用"差评"等敏感词</li>
-                      <li>委婉鼓励买家移除 Feedback</li>
+                      <li>引导站外沟通（邮箱截图/附件）<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                      <li>提供补发配件或部分退款方案<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                      <li>避免使用"差评"等敏感词<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
+                      <li>委婉鼓励买家移除 Feedback<span class="border-span border-top"></span><span class="border-span border-right"></span><span class="border-span border-bottom"></span><span class="border-span border-left"></span></li>
                     </ul>
                   </li>
                 </ul>
@@ -345,8 +440,8 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script>
-    // GSAP 动画
-    // 1. 标题渐入
+    // GSAP Animations
+    // 1. Header fade-in
     gsap.from("h1", {
       opacity: 0,
       y: 50,
@@ -354,7 +449,7 @@
       ease: "power2.out"
     });
 
-    // 2. 工作流程卡片渐入
+    // 2. Workflow cards initial fade-in
     gsap.from(".workflow-section li", {
       opacity: 0,
       y: 30,
@@ -364,7 +459,7 @@
       delay: 0.5
     });
 
-    // 3. 图片区域渐入
+    // 3. Image gallery fade-in
     gsap.from(".image-gallery img", {
       opacity: 0,
       scale: 0.8,
@@ -374,8 +469,72 @@
       delay: 1
     });
 
-    // 4. 鼠标悬停动画
-    document.querySelectorAll('.tree li').forEach(item => {
+    // 4. Button border animations
+    document.querySelectorAll('.tree li').forEach((item, index) => {
+      const topBorder = item.querySelector('.border-top');
+      const rightBorder = item.querySelector('.border-right');
+      const bottomBorder = item.querySelector('.border-bottom');
+      const leftBorder = item.querySelector('.border-left');
+
+      // Top border animation
+      gsap.fromTo(
+        topBorder,
+        { x: '-100%' },
+        {
+          x: '100%',
+          duration: 1,
+          ease: 'linear',
+          repeat: -1,
+          delay: index * 0.1
+        }
+      );
+
+      // Right border animation
+      gsap.fromTo(
+        rightBorder,
+        { y: '-100%' },
+        {
+          y: '100%',
+          duration: 1,
+          ease: 'linear',
+          repeat: -1,
+          delay: (index * 0.1) + 0.25
+        }
+      );
+
+      // Bottom border animation
+      gsap.fromTo(
+        bottomBorder,
+        { x: '100%' },
+        {
+          x: '-100%',
+          duration: 1,
+          ease: 'linear',
+          repeat: -1,
+          delay: (index * 0.1) + 0.5
+        }
+      );
+
+      // Left border animation
+      gsap.fromTo(
+        leftBorder,
+        { y: '100%' },
+        {
+          y: '-100%',
+          duration: 1,
+          ease: 'linear',
+          repeat: -1,
+          delay: (index * 0.1) + 0.75
+        }
+      );
+
+      // Hue rotation for varied colors
+      gsap.to(item, {
+        filter: `hue-rotate(${index % 2 === 0 ? 270 : 110}deg)`,
+        duration: 0
+      });
+
+      // Hover animation
       item.addEventListener('mouseenter', () => {
         gsap.to(item, {
           scale: 1.05,
@@ -384,6 +543,7 @@
           ease: "power2.out"
         });
       });
+
       item.addEventListener('mouseleave', () => {
         gsap.to(item, {
           scale: 1,
@@ -392,10 +552,8 @@
           ease: "power2.out"
         });
       });
-    });
 
-    // 5. 点击交互效果
-    document.querySelectorAll('.tree li').forEach(item => {
+      // Click interaction for active state
       item.addEventListener('click', function(e) {
         e.stopPropagation();
         document.querySelectorAll('.tree li.active').forEach(el => {
